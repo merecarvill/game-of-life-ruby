@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "game_of_life"
+
+locations = ARGV[2].split(",").map { |l| [l.split("-")[0].to_i, l.split("-")[1].to_i] }
+bottom_right = [ARGV[1].split("-")[0].to_i, ARGV[1].split("-")[1].to_i]
+world = GameOfLife::World.new(live_cell_locations: locations)
+
+GameOfLife::Display.new(bottom_right: bottom_right).run(world, ARGV[0].to_i)
