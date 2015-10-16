@@ -22,7 +22,7 @@ module GameOfLife
     end
 
     def new_live_locations(live_cell_locations)
-      potential_locations = live_cell_locations.map { |location| neighbors_of(location) }.flatten(1)
+      potential_locations = live_cell_locations.flat_map { |location| neighbors_of(location) }
       potential_locations.select { |location| potential_locations.count(location) == 3 }.uniq
     end
 
